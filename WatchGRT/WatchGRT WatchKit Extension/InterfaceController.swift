@@ -16,6 +16,11 @@ class InterfaceController: WKInterfaceController {
         super.awakeWithContext(context)
         
         // Configure interface objects here.
+        
+        let pipeline = GestureRecognitionPipeline()
+        pipeline.load("test");
+        
+        print(pipeline.predictedClassLabel)
     }
 
     override func willActivate() {

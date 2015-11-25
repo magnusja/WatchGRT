@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01594C21C06145E0032ECA2 /* grt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01594C11C06145E0032ECA2 /* grt.framework */; };
 		B09F4F0C1C0611C800003871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0B1C0611C800003871 /* AppDelegate.swift */; };
 		B09F4F0E1C0611C800003871 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0D1C0611C800003871 /* ViewController.swift */; };
 		B09F4F111C0611C800003871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F0F1C0611C800003871 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B01594C11C06145E0032ECA2 /* grt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = grt.framework; path = "../grt/build/build/Debug-watchos/grt.framework"; sourceTree = "<group>"; };
 		B09F4F081C0611C800003871 /* WatchGRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchGRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09F4F0B1C0611C800003871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09F4F0D1C0611C800003871 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,15 +135,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01594C21C06145E0032ECA2 /* grt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01594C31C06152E0032ECA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B01594C11C06145E0032ECA2 /* grt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B09F4EFF1C0611C800003871 = {
 			isa = PBXGroup;
 			children = (
+				B01594C31C06152E0032ECA2 /* Frameworks */,
 				B09F4F0A1C0611C800003871 /* WatchGRT */,
 				B09F4F1F1C0611C900003871 /* WatchGRTTests */,
 				B09F4F2A1C0611C900003871 /* WatchGRTUITests */,
@@ -593,6 +605,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = ../grt/iOS/ObjCWrapper/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -607,6 +620,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = ../grt/iOS/ObjCWrapper/BridgingHeader.h;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -733,6 +747,7 @@
 				B09F4F531C0611C900003871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B09F4F551C0611C900003871 /* Build configuration list for PBXNativeTarget "WatchGRT WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -741,6 +756,7 @@
 				B09F4F571C0611C900003871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B09F4F591C0611C900003871 /* Build configuration list for PBXNativeTarget "WatchGRT" */ = {
 			isa = XCConfigurationList;
@@ -749,6 +765,7 @@
 				B09F4F5B1C0611C900003871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B09F4F5C1C0611C900003871 /* Build configuration list for PBXNativeTarget "WatchGRTTests" */ = {
 			isa = XCConfigurationList;
@@ -757,6 +774,7 @@
 				B09F4F5E1C0611C900003871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B09F4F5F1C0611C900003871 /* Build configuration list for PBXNativeTarget "WatchGRTUITests" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +783,7 @@
 				B09F4F611C0611C900003871 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
