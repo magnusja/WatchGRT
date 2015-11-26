@@ -15,10 +15,12 @@ class InterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+        let filePath = documentsPath!.stringByAppendingString("/test.txt")
+        NSFileManager.defaultManager().createFileAtPath(filePath, contents: nil, attributes: nil)
         
         let pipeline = GestureRecognitionPipeline()
-        pipeline.load("test");
+        pipeline.load(filePath);
         
         print(pipeline.predictedClassLabel)
     }
