@@ -23,6 +23,7 @@
 		B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F481C0611C900003871 /* ExtensionDelegate.swift */; };
 		B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F4A1C0611C900003871 /* NotificationController.swift */; };
 		B09F4F4D1C0611C900003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F4C1C0611C900003871 /* Assets.xcassets */; };
+		B0DC40071C0F308A006AF728 /* CoreMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		B09F4F4A1C0611C900003871 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		B09F4F4C1C0611C900003871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B09F4F4E1C0611C900003871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreMotionManager.swift; path = ../WatchGRT/CoreMotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 		B09F4F431C0611C900003871 /* WatchGRT WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */,
 				B09F4F461C0611C900003871 /* InterfaceController.swift */,
 				B09F4F481C0611C900003871 /* ExtensionDelegate.swift */,
 				B09F4F4A1C0611C900003871 /* NotificationController.swift */,
@@ -355,6 +358,7 @@
 					};
 					B09F4F3E1C0611C900003871 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = ECAXURL4MX;
 					};
 				};
 			};
@@ -454,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0DC40071C0F308A006AF728 /* CoreMotionManager.swift in Sources */,
 				B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */,
 				B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */,
 				B09F4F471C0611C900003871 /* InterfaceController.swift in Sources */,
@@ -599,10 +604,13 @@
 		B09F4F521C0611C900003871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "WatchGRT WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.mjdev.WatchGRT.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = ../grt/iOS/ObjCWrapper/BridgingHeader.h;
@@ -614,10 +622,13 @@
 		B09F4F531C0611C900003871 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "WatchGRT WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.mjdev.WatchGRT.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = ../grt/iOS/ObjCWrapper/BridgingHeader.h;

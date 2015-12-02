@@ -11,6 +11,8 @@ import Foundation
 
 
 class InterfaceController: WKInterfaceController {
+    
+    private let accelerometerManager = AccelerometerManager()
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -23,6 +25,8 @@ class InterfaceController: WKInterfaceController {
         pipeline.load(filePath);
         
         print(pipeline.predictedClassLabel)
+        
+        accelerometerManager.start()
     }
 
     override func willActivate() {
