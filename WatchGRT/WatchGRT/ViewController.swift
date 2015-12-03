@@ -9,7 +9,7 @@
 import UIKit
 import WatchConnectivity
 
-class ViewController: UIViewController, WCSessionDelegate {
+class ViewController: UIViewController, WCSessionDelegate, UITextFieldDelegate {
     
     @IBOutlet private weak var recordingFileNameTextField: UITextField!
     
@@ -20,6 +20,8 @@ class ViewController: UIViewController, WCSessionDelegate {
 
         session.delegate = self
         session.activateSession()
+        
+        recordingFileNameTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,12 +59,23 @@ class ViewController: UIViewController, WCSessionDelegate {
     func session(session: WCSession, didReceiveMessageData messageData: NSData) {
         // This has to be the .csv file
         
-        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-        let fileUrl = documentsUrl.URLByAppendingPathComponent("\(recordingFileNameTextField.text)")
-        NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: messageData, attributes: nil)
-
-        let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+        print(messageData)
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileUrl = documentsUrl.URLByAppendingPathComponent("\(self.recordingFileNameTextField.text!)")
+            NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: messageData, attributes: nil)
+            
+            let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+            self.presentViewController(controller, animated: true, completion: nil)
+        })
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
 }
 

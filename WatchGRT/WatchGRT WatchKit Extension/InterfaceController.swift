@@ -58,7 +58,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(message["filename"]).csv")
             currentFilePath = fileUrl.path!
             
-            let header = "sample; x; y; z";
+            let header = "sample; x; y; z"
             NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
             
             currentFileHandle = NSFileHandle(forWritingAtPath: currentFilePath)
