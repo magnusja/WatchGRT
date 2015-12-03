@@ -13,11 +13,13 @@
                         <label alignment="left" text="Current file" id="fHy-KI-xyv"/>
                         <label alignment="left" text="Current sample:" id="zCT-Ao-BRs"/>
                         <label alignment="left" text="Recording:" id="cYa-pc-O3j"/>
+                        <label alignment="left" text="Sampels" id="K6d-QQ-FvN"/>
                     </items>
                     <connections>
                         <outlet property="currentFileLabel" destination="fHy-KI-xyv" id="flk-7u-2gt"/>
                         <outlet property="currentRecordSampleLabel" destination="zCT-Ao-BRs" id="KNB-fk-roV"/>
                         <outlet property="recordingLabel" destination="cYa-pc-O3j" id="wz7-4R-RFU"/>
+                        <outlet property="sampleCounterLabel" destination="K6d-QQ-FvN" id="Cbe-Pq-boK"/>
                     </connections>
                 </controller>
             </objects>
