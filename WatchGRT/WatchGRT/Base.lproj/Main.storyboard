@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WatchGRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recording File Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfM-rm-f8u">
+                                <rect key="frame" x="20" y="28" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-vb-rI6">
+                                <rect key="frame" x="249" y="285" width="104" height="30"/>
+                                <state key="normal" title="Record Sample"/>
+                                <connections>
+                                    <action selector="recordSample" destination="BYZ-38-t0r" eventType="touchUpInside" id="EFY-EP-nsb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g66-yV-K7C">
+                                <rect key="frame" x="248" y="75" width="105" height="30"/>
+                                <state key="normal" title="New Recording"/>
+                                <connections>
+                                    <action selector="newRecording" destination="BYZ-38-t0r" eventType="touchUpInside" id="sB1-Ty-HkX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g66-yV-K7C" firstAttribute="trailing" secondItem="7Da-vb-rI6" secondAttribute="trailing" id="SpW-iY-u0R"/>
+                            <constraint firstItem="xfM-rm-f8u" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Xgc-j3-NmG"/>
+                            <constraint firstItem="xfM-rm-f8u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="iEp-8P-wbo"/>
+                            <constraint firstItem="7Da-vb-rI6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kwi-Oa-QuS"/>
+                            <constraint firstItem="g66-yV-K7C" firstAttribute="top" secondItem="xfM-rm-f8u" secondAttribute="bottom" constant="17" id="kwl-Rz-LNI"/>
+                            <constraint firstItem="xfM-rm-f8u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xan-Zy-eQI"/>
+                            <constraint firstItem="xfM-rm-f8u" firstAttribute="centerX" secondItem="g66-yV-K7C" secondAttribute="centerX" id="zGg-5Q-NVN"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordingFileNameTextField" destination="xfM-rm-f8u" id="iju-Vq-cRm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="700" y="372"/>
         </scene>
     </scenes>
 </document>

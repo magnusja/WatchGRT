@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate {
+    
+    @IBOutlet private weak var recordingFileNameTextField: UITextField!
+    
+    private let session = WCSession.defaultSession()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        session.delegate = self
+        session.activateSession()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +27,22 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func newRecording() {
+        session.sendMessage(["command": "new_recording", "filename": recordingFileNameTextField.text!],
+            replyHandler: { (reply) -> Void in
+                print(reply)
+            }) { (error) -> Void in
+                print(error)
+        }
+    }
 
+    @IBAction func recordSample() {
+        session.sendMessage(["command": "trigger_record", "filename": recordingFileNameTextField.text!],
+            replyHandler: { (reply) -> Void in
+                print(reply)
+            }) { (error) -> Void in
+                print(error)
+        }
+    }
 }
 

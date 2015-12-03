@@ -8,35 +8,78 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, WCSessionDelegate {
+    @IBOutlet private var currentFileLabel: WKInterfaceLabel!
+    @IBOutlet private var currentRecordSampleLabel: WKInterfaceLabel!
+    @IBOutlet private var recordingLabel: WKInterfaceLabel!
     
     private let accelerometerManager = AccelerometerManager()
+    private var currentFilePath: String!
+    private var currentFileHandle: NSFileHandle!
+    private var sampleCounter = 0
+    private var isRecording = false
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
-        let filePath = documentsPath!.stringByAppendingString("/test.txt")
-        NSFileManager.defaultManager().createFileAtPath(filePath, contents: nil, attributes: nil)
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
         
-        let pipeline = GestureRecognitionPipeline()
-        pipeline.load(filePath);
-        
-        print(pipeline.predictedClassLabel)
-        
-        accelerometerManager.start()
     }
-
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
+    
+    private func startRecording() {
+        currentRecordSampleLabel.setText("\(sampleCounter)")
+        recordingLabel.setText("Recording: YES")
+        accelerometerManager.start({ (x, y, z) -> Void in
+            self.currentFileHandle.writeData("\(self.sampleCounter); \(x); \(y); \(z)".dataUsingEncoding(NSUTF8StringEncoding)!)
+        })
     }
+    
+    private func stopRecording() {
+        
+        recordingLabel.setText("Recording: NO")
+        accelerometerManager.stop()
+        sampleCounter++
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        guard let command = message["command"] as? String else {
+            print("Not command specified")
+            return
+        }
+        
+        switch command {
+        case "new_recording":
+            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
+            currentFilePath = documentsPath!.stringByAppendingString("\(message["filename"]).csv")
+            let header = "sample; x; y; z";
+            NSFileManager.defaultManager().createFileAtPath(currentFilePath, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
+            currentFileHandle = NSFileHandle(forWritingAtPath: currentFilePath)
+            currentFileHandle.seekToEndOfFile()
+            sampleCounter = 0
+            
+            currentFileLabel.setText(message["filename"] as? String)
+            currentRecordSampleLabel.setText("\(sampleCounter)")
+            
+            replyHandler(["status": "ok"])
 
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+        case "trigger_record":
+            if isRecording {
+                stopRecording()
+            } else {
+                startRecording()
+            }
+            
+            isRecording = !isRecording
+            
+            replyHandler(["status": "ok", "isRecording": isRecording])
+            
+        default:
+            print("unknown command")
+        }
     }
 
 }

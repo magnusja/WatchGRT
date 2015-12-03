@@ -19,7 +19,7 @@ class AccelerometerManager {
         motionManager.accelerometerUpdateInterval = 1/30.0 // 30 fps
     }
     
-    func start() {
+    func start(accHandler: (x: Double, y: Double, z: Double) -> Void) {
         let handler: CMDeviceMotionHandler = {(motion: CMDeviceMotion?, error: NSError?) -> Void in
             guard let acceleration = motion?.userAcceleration else {
                 print("Error: motion is nil: \(error)")
@@ -27,6 +27,7 @@ class AccelerometerManager {
             }
             
             print("Motion: x: \(acceleration.x) y: \(acceleration.y) z: \(acceleration.z)")
+            accHandler(x: acceleration.x, y: acceleration.y, z: acceleration.z)
         }
         
         if (motionManager.deviceMotionAvailable) {

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B01594C21C06145E0032ECA2 /* grt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01594C11C06145E0032ECA2 /* grt.framework */; };
+		B03067F51C0F494E004A9678 /* grt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; };
+		B03067F61C0F494E004A9678 /* grt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B09F4F0C1C0611C800003871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0B1C0611C800003871 /* AppDelegate.swift */; };
 		B09F4F0E1C0611C800003871 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0D1C0611C800003871 /* ViewController.swift */; };
 		B09F4F111C0611C800003871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F0F1C0611C800003871 /* Main.storyboard */; };
@@ -23,7 +24,7 @@
 		B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F481C0611C900003871 /* ExtensionDelegate.swift */; };
 		B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F4A1C0611C900003871 /* NotificationController.swift */; };
 		B09F4F4D1C0611C900003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F4C1C0611C900003871 /* Assets.xcassets */; };
-		B0DC40071C0F308A006AF728 /* CoreMotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */; };
+		B0DC40071C0F308A006AF728 /* AcceleremoterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B03067F71C0F494E004A9678 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B03067F61C0F494E004A9678 /* grt.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B09F4F541C0611C900003871 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,7 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B01594C11C06145E0032ECA2 /* grt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = grt.framework; path = "../grt/build/build/Debug-watchos/grt.framework"; sourceTree = "<group>"; };
+		B03067F41C0F494E004A9678 /* grt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = grt.framework; path = "/Volumes/MacintoshHD/Users/mep/Library/Developer/Xcode/DerivedData/WatchGRT-detuslgmltwhtlbqxwpzedczdgut/Build/Products/Debug-watchos/grt.framework"; sourceTree = "<absolute>"; };
 		B09F4F081C0611C800003871 /* WatchGRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchGRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09F4F0B1C0611C800003871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B09F4F0D1C0611C800003871 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +120,7 @@
 		B09F4F4A1C0611C900003871 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		B09F4F4C1C0611C900003871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B09F4F4E1C0611C900003871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreMotionManager.swift; path = ../WatchGRT/CoreMotionManager.swift; sourceTree = "<group>"; };
+		B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceleremoterManager.swift; path = ../WatchGRT/AcceleremoterManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B01594C21C06145E0032ECA2 /* grt.framework in Frameworks */,
+				B03067F51C0F494E004A9678 /* grt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,15 +159,14 @@
 		B01594C31C06152E0032ECA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B01594C11C06145E0032ECA2 /* grt.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B09F4EFF1C0611C800003871 = {
 			isa = PBXGroup;
 			children = (
-				B01594C31C06152E0032ECA2 /* Frameworks */,
 				B09F4F0A1C0611C800003871 /* WatchGRT */,
 				B09F4F1F1C0611C900003871 /* WatchGRTTests */,
 				B09F4F2A1C0611C900003871 /* WatchGRTUITests */,
@@ -221,7 +232,9 @@
 		B09F4F431C0611C900003871 /* WatchGRT WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B0DC40051C0F3043006AF728 /* CoreMotionManager.swift */,
+				B01594C31C06152E0032ECA2 /* Frameworks */,
+				B03067F41C0F494E004A9678 /* grt.framework */,
+				B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */,
 				B09F4F461C0611C900003871 /* InterfaceController.swift */,
 				B09F4F481C0611C900003871 /* ExtensionDelegate.swift */,
 				B09F4F4A1C0611C900003871 /* NotificationController.swift */,
@@ -322,6 +335,7 @@
 				B09F4F3B1C0611C900003871 /* Sources */,
 				B09F4F3C1C0611C900003871 /* Frameworks */,
 				B09F4F3D1C0611C900003871 /* Resources */,
+				B03067F71C0F494E004A9678 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -358,7 +372,7 @@
 					};
 					B09F4F3E1C0611C900003871 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = ECAXURL4MX;
+						DevelopmentTeam = GDCEM73U26;
 					};
 				};
 			};
@@ -458,7 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0DC40071C0F308A006AF728 /* CoreMotionManager.swift in Sources */,
+				B0DC40071C0F308A006AF728 /* AcceleremoterManager.swift in Sources */,
 				B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */,
 				B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */,
 				B09F4F471C0611C900003871 /* InterfaceController.swift in Sources */,
