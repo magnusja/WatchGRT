@@ -12,12 +12,14 @@ import WatchConnectivity
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet private var currentFileLabel: WKInterfaceLabel!
+    @IBOutlet private var sampleCounterLabel: WKInterfaceLabel!
     @IBOutlet private var currentRecordSampleLabel: WKInterfaceLabel!
     @IBOutlet private var recordingLabel: WKInterfaceLabel!
     
     private let accelerometerManager = AccelerometerManager()
     private var currentFilePath: String!
     private var currentFileHandle: NSFileHandle!
+    private var recordCounter = 0
     private var sampleCounter = 0
     private var isRecording = false
 
@@ -32,18 +34,30 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     private func startRecording() {
         WKInterfaceDevice.currentDevice().playHaptic(.Start)
-        currentRecordSampleLabel.setText("\(sampleCounter)")
+        currentRecordSampleLabel.setText("\(recordCounter)")
         recordingLabel.setText("Recording: YES")
         accelerometerManager.start({ (x, y, z) -> Void in
-            self.currentFileHandle.writeData("\(self.sampleCounter); \(x); \(y); \(z)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            self.sampleCounter++
+            self.sampleCounterLabel.setText("\(self.sampleCounter)")
+            self.currentFileHandle.writeData("\(self.recordCounter); \(x); \(y); \(z)\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         })
+        sampleCounter = 0
+        sampleCounterLabel.setText("\(self.sampleCounter)")
     }
     
     private func stopRecording() {
         WKInterfaceDevice.currentDevice().playHaptic(.Stop)
         recordingLabel.setText("Recording: NO")
         accelerometerManager.stop()
-        sampleCounter++
+        
+        // wait a second to accelerometer actually has stopped
+        let delta = Int64(UInt64(1) * NSEC_PER_SEC)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delta), dispatch_get_main_queue()) {
+            self.recordCounter++
+            self.sampleCounter = 0
+            self.sampleCounterLabel.setText("\(self.sampleCounter)")
+        }
+        
     }
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
@@ -58,15 +72,17 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(message["filename"]).csv")
             currentFilePath = fileUrl.path!
             
-            let header = "sample; x; y; z"
+            let header = "record; x; y; z\n"
             NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
             
             currentFileHandle = NSFileHandle(forWritingAtPath: currentFilePath)
             currentFileHandle.seekToEndOfFile()
-            sampleCounter = 0
+            recordCounter = 0
             
             currentFileLabel.setText(message["filename"] as? String)
-            currentRecordSampleLabel.setText("\(sampleCounter)")
+            currentRecordSampleLabel.setText("\(recordCounter)")
+            sampleCounter = 0
+            sampleCounterLabel.setText("\(self.sampleCounter)")
             
             replyHandler(["status": "ok"])
 

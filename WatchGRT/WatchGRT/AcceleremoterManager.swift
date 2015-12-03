@@ -20,9 +20,9 @@ class AccelerometerManager {
     }
     
     func start(accHandler: (x: Double, y: Double, z: Double) -> Void) {
-        let handler: CMDeviceMotionHandler = {(motion: CMDeviceMotion?, error: NSError?) -> Void in
-            guard let acceleration = motion?.userAcceleration else {
-                print("Error: motion is nil: \(error)")
+        let handler: CMAccelerometerHandler  = {(data: CMAccelerometerData?, error: NSError?) -> Void in
+            guard let acceleration = data?.acceleration else {
+                print("Error: data is nil: \(error)")
                 return
             }
             
@@ -30,12 +30,11 @@ class AccelerometerManager {
             accHandler(x: acceleration.x, y: acceleration.y, z: acceleration.z)
         }
         
-        if (motionManager.deviceMotionAvailable) {
-            motionManager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: handler)
-        }
+        motionManager.startAccelerometerUpdatesToQueue(motionQueue, withHandler: handler)
+        
     }
     
     func stop() {
-        motionManager.stopDeviceMotionUpdates()
+        motionManager.stopAccelerometerUpdates()
     }
 }
