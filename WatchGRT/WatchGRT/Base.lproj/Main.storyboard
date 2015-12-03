@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g66-yV-K7C">
+                                <rect key="frame" x="248" y="75" width="105" height="30"/>
+                                <state key="normal" title="New Recording"/>
+                                <connections>
+                                    <action selector="newRecording" destination="BYZ-38-t0r" eventType="touchUpInside" id="sB1-Ty-HkX"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Recording File Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfM-rm-f8u">
                                 <rect key="frame" x="20" y="28" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -30,18 +37,20 @@
                                     <action selector="recordSample" destination="BYZ-38-t0r" eventType="touchUpInside" id="EFY-EP-nsb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g66-yV-K7C">
-                                <rect key="frame" x="248" y="75" width="105" height="30"/>
-                                <state key="normal" title="New Recording"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jO-TP-LX7">
+                                <rect key="frame" x="275" y="529" width="53" height="30"/>
+                                <state key="normal" title="Get File"/>
                                 <connections>
-                                    <action selector="newRecording" destination="BYZ-38-t0r" eventType="touchUpInside" id="sB1-Ty-HkX"/>
+                                    <action selector="getFile" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXo-SJ-KJ3"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0jO-TP-LX7" firstAttribute="centerX" secondItem="7Da-vb-rI6" secondAttribute="centerX" id="0TY-ow-qCS"/>
                             <constraint firstItem="g66-yV-K7C" firstAttribute="trailing" secondItem="7Da-vb-rI6" secondAttribute="trailing" id="SpW-iY-u0R"/>
                             <constraint firstItem="xfM-rm-f8u" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Xgc-j3-NmG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="0jO-TP-LX7" secondAttribute="bottom" constant="41" id="g9s-Ca-Zz8"/>
                             <constraint firstItem="xfM-rm-f8u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="iEp-8P-wbo"/>
                             <constraint firstItem="7Da-vb-rI6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kwi-Oa-QuS"/>
                             <constraint firstItem="g66-yV-K7C" firstAttribute="top" secondItem="xfM-rm-f8u" secondAttribute="bottom" constant="17" id="kwl-Rz-LNI"/>

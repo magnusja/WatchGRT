@@ -31,6 +31,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     private func startRecording() {
+        WKInterfaceDevice.currentDevice().playHaptic(.Start)
         currentRecordSampleLabel.setText("\(sampleCounter)")
         recordingLabel.setText("Recording: YES")
         accelerometerManager.start({ (x, y, z) -> Void in
@@ -39,7 +40,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     private func stopRecording() {
-        
+        WKInterfaceDevice.currentDevice().playHaptic(.Stop)
         recordingLabel.setText("Recording: NO")
         accelerometerManager.stop()
         sampleCounter++
@@ -53,10 +54,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         switch command {
         case "new_recording":
-            let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first
-            currentFilePath = documentsPath!.stringByAppendingString("\(message["filename"]).csv")
+            let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(message["filename"]).csv")
+            currentFilePath = fileUrl.path!
+            
             let header = "sample; x; y; z";
-            NSFileManager.defaultManager().createFileAtPath(currentFilePath, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
+            NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
+            
             currentFileHandle = NSFileHandle(forWritingAtPath: currentFilePath)
             currentFileHandle.seekToEndOfFile()
             sampleCounter = 0
@@ -76,6 +80,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             isRecording = !isRecording
             
             replyHandler(["status": "ok", "isRecording": isRecording])
+            
+        case "send_file":
+            currentFileHandle.closeFile()
+            session.sendMessageData(NSFileManager.defaultManager().contentsAtPath(currentFilePath)!, replyHandler: nil, errorHandler: nil)
             
         default:
             print("unknown command")

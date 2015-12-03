@@ -37,12 +37,32 @@ class ViewController: UIViewController, WCSessionDelegate {
     }
 
     @IBAction func recordSample() {
-        session.sendMessage(["command": "trigger_record", "filename": recordingFileNameTextField.text!],
+        session.sendMessage(["command": "trigger_record"],
             replyHandler: { (reply) -> Void in
                 print(reply)
             }) { (error) -> Void in
                 print(error)
         }
+    }
+    
+    @IBAction func getFile() {
+        session.sendMessage(["command": "send_file"],
+            replyHandler: { (reply) -> Void in
+                print(reply)
+            }) { (error) -> Void in
+                print(error)
+        }
+    }
+    
+    func session(session: WCSession, didReceiveMessageData messageData: NSData) {
+        // This has to be the .csv file
+        
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileUrl = documentsUrl.URLByAppendingPathComponent("\(recordingFileNameTextField.text)")
+        NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: messageData, attributes: nil)
+
+        let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+        self.presentViewController(controller, animated: true, completion: nil)
     }
 }
 
