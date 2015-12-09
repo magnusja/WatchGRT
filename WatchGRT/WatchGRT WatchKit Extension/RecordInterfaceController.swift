@@ -25,11 +25,12 @@ class RecordInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
+    }
+    
+    override func willActivate() {
         let session = WCSession.defaultSession()
         session.delegate = self
         session.activateSession()
-        
     }
     
     private func startRecording() {
@@ -68,8 +69,13 @@ class RecordInterfaceController: WKInterfaceController, WCSessionDelegate {
         
         switch command {
         case "new_recording":
+            guard let fileName = message["filename"] as? String else {
+                currentFileLabel.setText("No file name given!")
+                return
+            }
+            
             let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-            let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(message["filename"]).csv")
+            let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(fileName).csv")
             currentFilePath = fileUrl.path!
             
             let header = "record; x; y; z\n"
@@ -109,9 +115,24 @@ class RecordInterfaceController: WKInterfaceController, WCSessionDelegate {
             let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(fileName).csv")
             
             session.transferFile(fileUrl, metadata: nil)
+            currentFileLabel.setText("SF:\(fileName)")
             
         default:
             print("unknown command")
+        }
+    }
+    
+    func session(session: WCSession, didFinishFileTransfer fileTransfer: WCSessionFileTransfer, error: NSError?) {
+        currentFileLabel.setText("finished transfer")
+        
+        if let error = error {
+            let defaultAction = WKAlertAction(
+                title: "Ok",
+                style: WKAlertActionStyle.Default) { () -> Void in
+                    print("OK")
+            }
+            
+            self.presentAlertControllerWithTitle("Error", message: "\(error)", preferredStyle: .Alert, actions: [defaultAction])
         }
     }
 

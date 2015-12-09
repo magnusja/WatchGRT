@@ -15,8 +15,8 @@ class RecordViewController: UIViewController, WCSessionDelegate, UITextFieldDele
     
     private let session = WCSession.defaultSession()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
         session.delegate = self
         session.activateSession()
@@ -48,7 +48,7 @@ class RecordViewController: UIViewController, WCSessionDelegate, UITextFieldDele
     }
     
     @IBAction func getFile() {
-        session.sendMessage(["command": "send_file"],
+        session.sendMessage(["command": "send_file", "filename": recordingFileNameTextField.text!],
             replyHandler: { (reply) -> Void in
                 print(reply)
             }) { (error) -> Void in
@@ -61,8 +61,16 @@ class RecordViewController: UIViewController, WCSessionDelegate, UITextFieldDele
         
         print(file)
         
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileUrl = documentsUrl.URLByAppendingPathComponent("\(self.recordingFileNameTextField.text!)")
+        
+        // Remove if already existing
+        let _ = try? NSFileManager.defaultManager().removeItemAtURL(fileUrl)
+        
+        try! NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: fileUrl)
+        
         dispatch_async(dispatch_get_main_queue(), {
-            let controller = UIActivityViewController(activityItems: [file.fileURL], applicationActivities: nil)
+            let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }
