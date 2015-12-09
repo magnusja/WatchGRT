@@ -26,10 +26,24 @@
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Predict Interface Controller-->
         <scene sceneID="eYe-fE-1B7">
             <objects>
-                <controller id="SGq-MS-TNj"/>
+                <controller id="SGq-MS-TNj" customClass="PredictInterfaceController" customModule="WatchGRT_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="File" id="zyW-cQ-zko"/>
+                        <label alignment="left" text="ClassLabel" id="4ur-RA-EyP"/>
+                        <button width="1" alignment="left" title="Start" id="qsE-9K-bO5">
+                            <connections>
+                                <action selector="start" destination="SGq-MS-TNj" id="gok-8H-f0O"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="currentFileLabel" destination="zyW-cQ-zko" id="cdI-uM-K3J"/>
+                        <outlet property="predictedClassLabel" destination="4ur-RA-EyP" id="9Eu-tN-mnl"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="454" y="348"/>
         </scene>

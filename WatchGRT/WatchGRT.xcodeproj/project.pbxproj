@@ -26,6 +26,7 @@
 		B09F4F4D1C0611C900003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F4C1C0611C900003871 /* Assets.xcassets */; };
 		B0DC40071C0F308A006AF728 /* AcceleremoterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */; };
 		B0E751B11C1865E000E73789 /* PredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E751B01C1865E000E73789 /* PredictViewController.swift */; };
+		B0E751B71C18796900E73789 /* PredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E751B61C18796900E73789 /* PredictViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		B09F4F4E1C0611C900003871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AcceleremoterManager.swift; path = ../WatchGRT/AcceleremoterManager.swift; sourceTree = "<group>"; };
 		B0E751B01C1865E000E73789 /* PredictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictViewController.swift; sourceTree = "<group>"; };
+		B0E751B61C18796900E73789 /* PredictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		B01594C31C06152E0032ECA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B03067F41C0F494E004A9678 /* grt.framework */,
 			);
 			name = Frameworks;
 			path = ..;
@@ -236,9 +239,9 @@
 			isa = PBXGroup;
 			children = (
 				B01594C31C06152E0032ECA2 /* Frameworks */,
-				B03067F41C0F494E004A9678 /* grt.framework */,
 				B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */,
 				B09F4F461C0611C900003871 /* RecordInterfaceController.swift */,
+				B0E751B61C18796900E73789 /* PredictViewController.swift */,
 				B09F4F481C0611C900003871 /* ExtensionDelegate.swift */,
 				B09F4F4A1C0611C900003871 /* NotificationController.swift */,
 				B09F4F4C1C0611C900003871 /* Assets.xcassets */,
@@ -476,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0E751B71C18796900E73789 /* PredictViewController.swift in Sources */,
 				B0DC40071C0F308A006AF728 /* AcceleremoterManager.swift in Sources */,
 				B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */,
 				B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */,
