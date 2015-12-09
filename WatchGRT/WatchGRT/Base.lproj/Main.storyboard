@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UbR-FD-K0m">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Record-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WatchGRT" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RecordViewController" customModule="WatchGRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jO-TP-LX7">
-                                <rect key="frame" x="275" y="529" width="53" height="30"/>
+                                <rect key="frame" x="275" y="480" width="53" height="30"/>
                                 <state key="normal" title="Get File"/>
                                 <connections>
                                     <action selector="getFile" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXo-SJ-KJ3"/>
@@ -58,11 +58,49 @@
                             <constraint firstItem="xfM-rm-f8u" firstAttribute="centerX" secondItem="g66-yV-K7C" secondAttribute="centerX" id="zGg-5Q-NVN"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Record" id="Imw-cz-jfc"/>
                     <connections>
                         <outlet property="recordingFileNameTextField" destination="xfM-rm-f8u" id="iju-Vq-cRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="372"/>
+        </scene>
+        <!--Predict-->
+        <scene sceneID="OLs-yb-2Ux">
+            <objects>
+                <viewController id="o2f-LG-qTE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EKy-Mz-kAs"/>
+                        <viewControllerLayoutGuide type="bottom" id="9gB-Rz-z95"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yRW-my-QCP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Predict" id="3Vr-Nl-lRv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="guX-ao-d9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="1121"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3of-a0-t17">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UbR-FD-K0m" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="qzk-53-zGW">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2Wc-9p-W1n"/>
+                        <segue destination="o2f-LG-qTE" kind="relationship" relationship="viewControllers" id="MwE-tL-WIn"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGE-2B-nEs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="372"/>
         </scene>

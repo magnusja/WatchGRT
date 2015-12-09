@@ -10,7 +10,7 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class RecordInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet private var currentFileLabel: WKInterfaceLabel!
     @IBOutlet private var sampleCounterLabel: WKInterfaceLabel!
     @IBOutlet private var currentRecordSampleLabel: WKInterfaceLabel!
@@ -18,7 +18,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     private let accelerometerManager = AccelerometerManager()
     private var currentFilePath: String!
-    private var currentFileHandle: NSFileHandle!
+    private var currentFileHandle: NSFileHandle?
     private var recordCounter = 0
     private var sampleCounter = 0
     private var isRecording = false
@@ -39,7 +39,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         accelerometerManager.start({ (x, y, z) -> Void in
             self.sampleCounter++
             self.sampleCounterLabel.setText("\(self.sampleCounter)")
-            self.currentFileHandle.writeData("\(self.recordCounter); \(x); \(y); \(z)\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+            self.currentFileHandle?.writeData("\(self.recordCounter); \(x); \(y); \(z)\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         })
         sampleCounter = 0
         sampleCounterLabel.setText("\(self.sampleCounter)")
@@ -76,7 +76,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: header.dataUsingEncoding(NSUTF8StringEncoding)!, attributes: nil)
             
             currentFileHandle = NSFileHandle(forWritingAtPath: currentFilePath)
-            currentFileHandle.seekToEndOfFile()
+            currentFileHandle?.seekToEndOfFile()
             recordCounter = 0
             
             currentFileLabel.setText(message["filename"] as? String)
@@ -98,8 +98,17 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             replyHandler(["status": "ok", "isRecording": isRecording])
             
         case "send_file":
-            currentFileHandle.closeFile()
-            session.sendMessageData(NSFileManager.defaultManager().contentsAtPath(currentFilePath)!, replyHandler: nil, errorHandler: nil)
+            currentFileHandle?.closeFile()
+            
+            guard let fileName = message["filename"] as? String else {
+                currentFileLabel.setText("No file name given!")
+                return
+            }
+            
+            let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+            let fileUrl = documentsUrl.URLByAppendingPathComponent("/\(fileName).csv")
+            
+            session.transferFile(fileUrl, metadata: nil)
             
         default:
             print("unknown command")

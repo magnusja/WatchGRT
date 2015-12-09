@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Record Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchGRT_WatchKit_App" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="RecordInterfaceController" customModule="WatchGRT_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="Current file" id="fHy-KI-xyv"/>
                         <label alignment="left" text="Current sample:" id="zCT-Ao-BRs"/>
@@ -20,10 +20,18 @@
                         <outlet property="currentRecordSampleLabel" destination="zCT-Ao-BRs" id="KNB-fk-roV"/>
                         <outlet property="recordingLabel" destination="cYa-pc-O3j" id="wz7-4R-RFU"/>
                         <outlet property="sampleCounterLabel" destination="K6d-QQ-FvN" id="Cbe-Pq-boK"/>
+                        <segue destination="SGq-MS-TNj" kind="relationship" relationship="nextPage" id="QNP-bo-kWD"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="eYe-fE-1B7">
+            <objects>
+                <controller id="SGq-MS-TNj"/>
+            </objects>
+            <point key="canvasLocation" x="454" y="348"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

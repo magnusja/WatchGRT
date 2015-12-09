@@ -10,7 +10,7 @@
 		B03067F51C0F494E004A9678 /* grt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; };
 		B03067F61C0F494E004A9678 /* grt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B09F4F0C1C0611C800003871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0B1C0611C800003871 /* AppDelegate.swift */; };
-		B09F4F0E1C0611C800003871 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0D1C0611C800003871 /* ViewController.swift */; };
+		B09F4F0E1C0611C800003871 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0D1C0611C800003871 /* RecordViewController.swift */; };
 		B09F4F111C0611C800003871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F0F1C0611C800003871 /* Main.storyboard */; };
 		B09F4F131C0611C800003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F121C0611C800003871 /* Assets.xcassets */; };
 		B09F4F161C0611C900003871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F141C0611C900003871 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 		B09F4F371C0611C900003871 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F351C0611C900003871 /* Interface.storyboard */; };
 		B09F4F391C0611C900003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F381C0611C900003871 /* Assets.xcassets */; };
 		B09F4F401C0611C900003871 /* WatchGRT WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B09F4F3F1C0611C900003871 /* WatchGRT WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B09F4F471C0611C900003871 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F461C0611C900003871 /* InterfaceController.swift */; };
+		B09F4F471C0611C900003871 /* RecordInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F461C0611C900003871 /* RecordInterfaceController.swift */; };
 		B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F481C0611C900003871 /* ExtensionDelegate.swift */; };
 		B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F4A1C0611C900003871 /* NotificationController.swift */; };
 		B09F4F4D1C0611C900003871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09F4F4C1C0611C900003871 /* Assets.xcassets */; };
@@ -98,7 +98,7 @@
 		B03067F41C0F494E004A9678 /* grt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = grt.framework; path = "/Volumes/MacintoshHD/Users/mep/Library/Developer/Xcode/DerivedData/WatchGRT-detuslgmltwhtlbqxwpzedczdgut/Build/Products/Debug-watchos/grt.framework"; sourceTree = "<absolute>"; };
 		B09F4F081C0611C800003871 /* WatchGRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchGRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09F4F0B1C0611C800003871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B09F4F0D1C0611C800003871 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B09F4F0D1C0611C800003871 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		B09F4F101C0611C800003871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B09F4F121C0611C800003871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B09F4F151C0611C900003871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		B09F4F3A1C0611C900003871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B09F4F3F1C0611C900003871 /* WatchGRT WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchGRT WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09F4F451C0611C900003871 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		B09F4F461C0611C900003871 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B09F4F461C0611C900003871 /* RecordInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInterfaceController.swift; sourceTree = "<group>"; };
 		B09F4F481C0611C900003871 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B09F4F4A1C0611C900003871 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		B09F4F4C1C0611C900003871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				B09F4F0B1C0611C800003871 /* AppDelegate.swift */,
-				B09F4F0D1C0611C800003871 /* ViewController.swift */,
+				B09F4F0D1C0611C800003871 /* RecordViewController.swift */,
 				B09F4F0F1C0611C800003871 /* Main.storyboard */,
 				B09F4F121C0611C800003871 /* Assets.xcassets */,
 				B09F4F141C0611C900003871 /* LaunchScreen.storyboard */,
@@ -235,7 +235,7 @@
 				B01594C31C06152E0032ECA2 /* Frameworks */,
 				B03067F41C0F494E004A9678 /* grt.framework */,
 				B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */,
-				B09F4F461C0611C900003871 /* InterfaceController.swift */,
+				B09F4F461C0611C900003871 /* RecordInterfaceController.swift */,
 				B09F4F481C0611C900003871 /* ExtensionDelegate.swift */,
 				B09F4F4A1C0611C900003871 /* NotificationController.swift */,
 				B09F4F4C1C0611C900003871 /* Assets.xcassets */,
@@ -447,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B09F4F0E1C0611C800003871 /* ViewController.swift in Sources */,
+				B09F4F0E1C0611C800003871 /* RecordViewController.swift in Sources */,
 				B09F4F0C1C0611C800003871 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +475,7 @@
 				B0DC40071C0F308A006AF728 /* AcceleremoterManager.swift in Sources */,
 				B09F4F4B1C0611C900003871 /* NotificationController.swift in Sources */,
 				B09F4F491C0611C900003871 /* ExtensionDelegate.swift in Sources */,
-				B09F4F471C0611C900003871 /* InterfaceController.swift in Sources */,
+				B09F4F471C0611C900003871 /* RecordInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 import WatchConnectivity
 
-class ViewController: UIViewController, WCSessionDelegate, UITextFieldDelegate {
+class RecordViewController: UIViewController, WCSessionDelegate, UITextFieldDelegate {
     
     @IBOutlet private weak var recordingFileNameTextField: UITextField!
     
@@ -56,18 +56,13 @@ class ViewController: UIViewController, WCSessionDelegate, UITextFieldDelegate {
         }
     }
     
-    func session(session: WCSession, didReceiveMessageData messageData: NSData) {
+    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
         // This has to be the .csv file
         
-        print(messageData)
+        print(file)
         
         dispatch_async(dispatch_get_main_queue(), {
-            
-            let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-            let fileUrl = documentsUrl.URLByAppendingPathComponent("\(self.recordingFileNameTextField.text!)")
-            NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: messageData, attributes: nil)
-            
-            let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: nil)
+            let controller = UIActivityViewController(activityItems: [file.fileURL], applicationActivities: nil)
             self.presentViewController(controller, animated: true, completion: nil)
         })
     }
