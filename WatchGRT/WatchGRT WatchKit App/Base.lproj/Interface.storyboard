@@ -34,6 +34,7 @@
                         <label alignment="left" text="File" id="zyW-cQ-zko"/>
                         <label alignment="left" text="Samples" id="Qhp-dY-w74"/>
                         <label alignment="left" text="ClassLabel" id="4ur-RA-EyP"/>
+                        <label alignment="left" text="status" id="pdD-Ep-10h"/>
                         <button width="1" alignment="left" title="Start" id="qsE-9K-bO5">
                             <connections>
                                 <action selector="start" destination="SGq-MS-TNj" id="gok-8H-f0O"/>
@@ -44,6 +45,7 @@
                         <outlet property="currentFileLabel" destination="zyW-cQ-zko" id="cdI-uM-K3J"/>
                         <outlet property="predictedClassLabel" destination="4ur-RA-EyP" id="9Eu-tN-mnl"/>
                         <outlet property="sampleLabel" destination="Qhp-dY-w74" id="nsR-Mp-TrD"/>
+                        <outlet property="statusLabel" destination="pdD-Ep-10h" id="Diq-is-BxX"/>
                     </connections>
                 </controller>
             </objects>

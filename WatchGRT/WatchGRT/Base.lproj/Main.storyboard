@@ -70,7 +70,7 @@
         <!--Predict-->
         <scene sceneID="OLs-yb-2Ux">
             <objects>
-                <viewController id="o2f-LG-qTE" sceneMemberID="viewController">
+                <viewController id="o2f-LG-qTE" customClass="PredictViewController" customModule="WatchGRT" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EKy-Mz-kAs"/>
                         <viewControllerLayoutGuide type="bottom" id="9gB-Rz-z95"/>
@@ -78,9 +78,45 @@
                     <view key="view" contentMode="scaleToFill" id="yRW-my-QCP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ofm-VM-XzL">
+                                <rect key="frame" x="20" y="47" width="491" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u91-XU-AjJ">
+                                <rect key="frame" x="538" y="46" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="b4B-Rx-IZd"/>
+                                </constraints>
+                                <state key="normal" title="Paste"/>
+                                <connections>
+                                    <action selector="paste" destination="o2f-LG-qTE" eventType="touchUpInside" id="uCI-gJ-KDW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dx0-zc-Sa6">
+                                <rect key="frame" x="249" y="173" width="57" height="30"/>
+                                <state key="normal" title="Transfer"/>
+                                <connections>
+                                    <action selector="transfer" destination="o2f-LG-qTE" eventType="touchUpInside" id="IiM-iq-ews"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u91-XU-AjJ" firstAttribute="leading" secondItem="ofm-VM-XzL" secondAttribute="trailing" constant="27" id="BAM-du-v1c"/>
+                            <constraint firstItem="dx0-zc-Sa6" firstAttribute="top" secondItem="ofm-VM-XzL" secondAttribute="bottom" constant="96" id="CfY-Yh-bGg"/>
+                            <constraint firstItem="u91-XU-AjJ" firstAttribute="top" secondItem="EKy-Mz-kAs" secondAttribute="bottom" constant="26" id="IrR-3W-BZO"/>
+                            <constraint firstItem="u91-XU-AjJ" firstAttribute="baseline" secondItem="ofm-VM-XzL" secondAttribute="baseline" id="kkb-6E-MLy"/>
+                            <constraint firstItem="ofm-VM-XzL" firstAttribute="leading" secondItem="yRW-my-QCP" secondAttribute="leadingMargin" id="r4s-6o-auI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u91-XU-AjJ" secondAttribute="trailing" constant="3" id="rtz-i8-4cP"/>
+                            <constraint firstItem="dx0-zc-Sa6" firstAttribute="leading" secondItem="yRW-my-QCP" secondAttribute="leading" constant="249" id="xdL-6E-5wV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Predict" id="3Vr-Nl-lRv"/>
+                    <connections>
+                        <outlet property="urlTextField" destination="ofm-VM-XzL" id="vYv-N5-gRQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guX-ao-d9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
