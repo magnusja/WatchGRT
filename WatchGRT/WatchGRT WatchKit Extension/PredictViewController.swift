@@ -38,10 +38,11 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
         
         
         var currentClassLabel = 0 as UInt
+        let vector = VectorDouble()
         
         sampleCounter = 0
         accelerometerManager.start { (x, y, z) -> Void in
-            let vector = VectorDouble()
+            vector.clear()
             vector.pushBack(x)
             vector.pushBack(y)
             vector.pushBack(z)
