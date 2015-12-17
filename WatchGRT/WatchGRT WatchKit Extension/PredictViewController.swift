@@ -36,8 +36,8 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
         
         statusLabel.setText("Load \(pipeline.load(fileUrl.path))")
         
-        var currentClassLabel = 0 as UInt
         
+        var currentClassLabel = 0 as UInt
         
         sampleCounter = 0
         accelerometerManager.start { (x, y, z) -> Void in
@@ -48,7 +48,7 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
             let result = self.pipeline.predict(vector)
             if self.pipeline.predictedClassLabel != currentClassLabel {
                 currentClassLabel = self.pipeline.predictedClassLabel
-                self.predictedClassLabel.setText("\(result):\(self.pipeline.predictedClassLabel)")
+                self.predictedClassLabel.setText("\(result):\(currentClassLabel)")
             }
             if (self.sampleCounter % 30) == 0 {
                 self.sampleLabel.setText("\(self.sampleCounter)")
