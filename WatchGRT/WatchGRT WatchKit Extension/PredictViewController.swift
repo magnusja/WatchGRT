@@ -31,6 +31,14 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
     }
     
     private func startPrediction() {
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        let fileUrl = documentsUrl.URLByAppendingPathComponent("train.grt")
+        
+        statusLabel.setText("Load \(pipeline.load(fileUrl.path))")
+        
+        var currentClassLabel = 0 as UInt
+        
+        
         sampleCounter = 0
         accelerometerManager.start { (x, y, z) -> Void in
             let vector = VectorDouble()
@@ -38,8 +46,14 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
             vector.pushBack(y)
             vector.pushBack(z)
             let result = self.pipeline.predict(vector)
-            self.predictedClassLabel.setText("\(result):\(self.pipeline.predictedClassLabel)")
-            self.sampleLabel.setText("\(self.sampleCounter++)")
+            if self.pipeline.predictedClassLabel != currentClassLabel {
+                currentClassLabel = self.pipeline.predictedClassLabel
+                self.predictedClassLabel.setText("\(result):\(self.pipeline.predictedClassLabel)")
+            }
+            if (self.sampleCounter % 30) == 0 {
+                self.sampleLabel.setText("\(self.sampleCounter)")
+            }
+            self.sampleCounter++
         }
         isRunning = true
         
@@ -61,6 +75,8 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
         } else {
             startPrediction()
         }
+        
+        currentFileLabel.setText("\(isRunning)")
     }
     
     func session(session: WCSession, didReceiveFile file: WCSessionFile) {

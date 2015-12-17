@@ -39,7 +39,9 @@ class RecordInterfaceController: WKInterfaceController, WCSessionDelegate {
         recordingLabel.setText("Recording: YES")
         accelerometerManager.start({ (x, y, z) -> Void in
             self.sampleCounter++
-            self.sampleCounterLabel.setText("\(self.sampleCounter)")
+            if (self.sampleCounter % 30) == 0 {
+                self.sampleCounterLabel.setText("\(self.sampleCounter)")
+            }
             self.currentFileHandle?.writeData("\(self.recordCounter); \(x); \(y); \(z)\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         })
         sampleCounter = 0
