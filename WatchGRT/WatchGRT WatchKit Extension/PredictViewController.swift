@@ -50,6 +50,7 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
             if self.pipeline.predictedClassLabel != currentClassLabel {
                 currentClassLabel = self.pipeline.predictedClassLabel
                 self.predictedClassLabel.setText("\(result):\(currentClassLabel)")
+                WKInterfaceDevice.currentDevice().playHaptic(.Success)
             }
             if (self.sampleCounter % 30) == 0 {
                 self.sampleLabel.setText("\(self.sampleCounter)")
