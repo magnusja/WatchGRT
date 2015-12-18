@@ -38,6 +38,7 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
         
         
         var currentClassLabel = 0 as UInt
+        var labelUpdateTime = NSDate.timeIntervalSinceReferenceDate()
         let vector = VectorDouble()
         
         sampleCounter = 0
@@ -47,8 +48,16 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
             vector.pushBack(y)
             vector.pushBack(z)
             let result = self.pipeline.predict(vector)
-            if self.pipeline.predictedClassLabel != currentClassLabel {
-                currentClassLabel = self.pipeline.predictedClassLabel
+            let localClassLabel = self.pipeline.predictedClassLabel
+            if localClassLabel != currentClassLabel {
+                let timeInterval =  NSDate.timeIntervalSinceReferenceDate() - labelUpdateTime
+                
+                guard timeInterval > 0.2 else {
+                    return
+                }
+                
+                labelUpdateTime = NSDate.timeIntervalSinceReferenceDate()
+                currentClassLabel = localClassLabel
                 self.predictedClassLabel.setText("\(result):\(currentClassLabel)")
                 WKInterfaceDevice.currentDevice().playHaptic(.Success)
             }
