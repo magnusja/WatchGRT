@@ -42,29 +42,37 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
         let vector = VectorDouble()
         
         sampleCounter = 0
+
         accelerometerManager.start { (x, y, z) -> Void in
+            //let startTime = NSDate.timeIntervalSinceReferenceDate()
             vector.clear()
             vector.pushBack(x)
             vector.pushBack(y)
             vector.pushBack(z)
             let result = self.pipeline.predict(vector)
             let localClassLabel = self.pipeline.predictedClassLabel
+            
             if localClassLabel != currentClassLabel {
-                let timeInterval =  NSDate.timeIntervalSinceReferenceDate() - labelUpdateTime
+                let currentTime = NSDate.timeIntervalSinceReferenceDate()
+                let timeInterval = currentTime - labelUpdateTime
                 
-                guard timeInterval > 0.2 else {
+                guard timeInterval > 0.5 else {
                     return
                 }
                 
-                labelUpdateTime = NSDate.timeIntervalSinceReferenceDate()
+                labelUpdateTime = currentTime
                 currentClassLabel = localClassLabel
                 self.predictedClassLabel.setText("\(result):\(currentClassLabel)")
-                WKInterfaceDevice.currentDevice().playHaptic(.Success)
+                if currentClassLabel != 0 {
+                    WKInterfaceDevice.currentDevice().playHaptic(.Success)
+                }
             }
             if (self.sampleCounter % 30) == 0 {
                 self.sampleLabel.setText("\(self.sampleCounter)")
             }
             self.sampleCounter++
+            //let endTime = NSDate.timeIntervalSinceReferenceDate()
+            //self.sampleLabel.setText("\(endTime - startTime)")
         }
         isRunning = true
         

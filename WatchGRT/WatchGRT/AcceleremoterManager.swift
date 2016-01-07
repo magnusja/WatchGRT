@@ -16,7 +16,7 @@ class AccelerometerManager {
     init() {
         motionQueue.name = "CoreMotion"
         
-        motionManager.accelerometerUpdateInterval = 1/30.0 // 30 fps
+        motionManager.accelerometerUpdateInterval = 1/15.0
     }
     
     func start(accHandler: (x: Double, y: Double, z: Double) -> Void) {
