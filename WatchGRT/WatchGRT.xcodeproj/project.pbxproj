@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B03067F51C0F494E004A9678 /* grt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; };
 		B03067F61C0F494E004A9678 /* grt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B03067F41C0F494E004A9678 /* grt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B04E72C81C21B7F5006BED13 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04E72C71C21B7F5006BED13 /* HealthKit.framework */; };
 		B04E72CB1C21B801006BED13 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04E72CA1C21B801006BED13 /* HealthKit.framework */; };
 		B09F4F0C1C0611C800003871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0B1C0611C800003871 /* AppDelegate.swift */; };
 		B09F4F0E1C0611C800003871 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09F4F0D1C0611C800003871 /* RecordViewController.swift */; };
@@ -100,9 +99,6 @@
 
 /* Begin PBXFileReference section */
 		B03067F41C0F494E004A9678 /* grt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = grt.framework; path = "../Debug-watchos/grt.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B04E72C61C21B7E7006BED13 /* WatchGRT WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "WatchGRT WatchKit Extension.entitlements"; sourceTree = "<group>"; };
-		B04E72C71C21B7F5006BED13 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		B04E72C91C21B7F5006BED13 /* WatchGRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WatchGRT.entitlements; sourceTree = "<group>"; };
 		B04E72CA1C21B801006BED13 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		B09F4F081C0611C800003871 /* WatchGRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchGRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09F4F0B1C0611C800003871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +134,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B04E72C81C21B7F5006BED13 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,8 +200,6 @@
 		B09F4F0A1C0611C800003871 /* WatchGRT */ = {
 			isa = PBXGroup;
 			children = (
-				B04E72C71C21B7F5006BED13 /* HealthKit.framework */,
-				B04E72C91C21B7F5006BED13 /* WatchGRT.entitlements */,
 				B09F4F0B1C0611C800003871 /* AppDelegate.swift */,
 				B09F4F0D1C0611C800003871 /* RecordViewController.swift */,
 				B0E751B01C1865E000E73789 /* PredictViewController.swift */,
@@ -249,7 +242,6 @@
 		B09F4F431C0611C900003871 /* WatchGRT WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B04E72C61C21B7E7006BED13 /* WatchGRT WatchKit Extension.entitlements */,
 				B01594C31C06152E0032ECA2 /* Frameworks */,
 				B0DC40051C0F3043006AF728 /* AcceleremoterManager.swift */,
 				B09F4F461C0611C900003871 /* RecordInterfaceController.swift */,
@@ -649,7 +641,7 @@
 		B09F4F521C0611C900003871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "WatchGRT WatchKit Extension/WatchGRT WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "WatchGRT WatchKit Extension/Info.plist";
@@ -668,7 +660,7 @@
 		B09F4F531C0611C900003871 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "WatchGRT WatchKit Extension/WatchGRT WatchKit Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "WatchGRT WatchKit Extension/Info.plist";
@@ -720,7 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WatchGRT/WatchGRT.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				INFOPLIST_FILE = WatchGRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.mjdev.WatchGRT;
@@ -732,7 +724,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WatchGRT/WatchGRT.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				INFOPLIST_FILE = WatchGRT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.mjdev.WatchGRT;
