@@ -26,7 +26,6 @@ class AccelerometerManager {
                 return
             }
             
-            print("Motion: x: \(acceleration.x) y: \(acceleration.y) z: \(acceleration.z)")
             accHandler(x: acceleration.x, y: acceleration.y, z: acceleration.z)
         }
         

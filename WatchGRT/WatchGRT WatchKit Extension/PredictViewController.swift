@@ -62,7 +62,7 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate, HKWo
                 
                 labelUpdateTime = currentTime
                 currentClassLabel = localClassLabel
-                self.predictedClassLabel.setText("\(result):\(currentClassLabel)")
+                self.predictedClassLabel.setText("\(result):\(currentClassLabel):\(timeInterval)")
                 if currentClassLabel != 0 {
                     WKInterfaceDevice.currentDevice().playHaptic(.Success)
                 }
