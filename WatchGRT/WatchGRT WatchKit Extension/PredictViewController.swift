@@ -52,6 +52,7 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate {
             if localClassLabel != currentClassLabel {
                 let currentTime = NSDate.timeIntervalSinceReferenceDate()
                 let timeInterval = currentTime - labelUpdateTime
+                let maximumLikelihood = self.pipeline.maximumLikelihood
                 
                 guard timeInterval > 0.5 else {
                     return
@@ -59,7 +60,8 @@ class PredictInterfaceController: WKInterfaceController, WCSessionDelegate {
                 
                 labelUpdateTime = currentTime
                 currentClassLabel = localClassLabel
-                self.predictedClassLabel.setText("\(result):\(currentClassLabel):\(timeInterval)")
+                self.statusLabel.setText("t:\(timeInterval)")
+                self.predictedClassLabel.setText("\(result):\(currentClassLabel):\(maximumLikelihood)")
                 if currentClassLabel != 0 {
                     WKInterfaceDevice.currentDevice().playHaptic(.Success)
                 }
